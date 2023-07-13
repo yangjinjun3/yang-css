@@ -1,0 +1,77 @@
+/* 文本溢出显示省略号 */
+@mixin text-overflow($line:1, $width:'') {
+  width: if(type-of($width) == 'number', #{$width} + 'px', #{$width});
+  overflow: hidden;
+
+  @if($line == 1) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  @if($line > 1) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    word-break: break-all;
+  }
+}
+
+/*
+* 功能：1px 物理像素
+* 前提：正确设置 meta 标签，即 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+*/
+@mixin one-physical-pixel-border($bStyle, $color, $bDir: null) {
+	position: relative;
+
+	&:after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    transform: scale(0.5);
+
+    @if($bDir == 'top' or $bDir == 'bottom') {
+      left: 0;
+      #{$bDir}: 0;
+      width: 200%;
+      height: 0;
+      transform-origin: left $bDir;
+      border-#{$bDir}: 1px $bStyle $color;
+    }
+
+    @if($bDir == 'left' or $bDir == 'right') {
+      top: 0;
+      #{$bDir}: 0;
+      width: 0;
+      height: 200%;
+      transform-origin: $bDir top;
+      border-#{$bDir}: 1px $bStyle $color;
+    }
+
+    @if($bDir == null) {
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      transform-origin: left top;
+      border: 1px $bStyle $color;
+    }
+	}
+}
+
+/* 清除浮动 */
+@mixin clearfix {
+  &::after{
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+/* 指定背景图像的大小 */
+@mixin backgroundSize($image, $width: 100%, $height: 100%) {
+  background-image: url(#{$image});
+  background-size: $width $height;
+}
