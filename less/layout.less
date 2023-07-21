@@ -1,0 +1,19 @@
+/* 垂直水平居中 */
+.center(@layoutType: flex) {
+    & when (@layoutType = 'absolute') {
+        position: relative;
+
+        > :first-child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    & when not (@layoutType = 'absolute') {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
