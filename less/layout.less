@@ -1,6 +1,12 @@
 /* 垂直水平居中 */
 .center(@layoutType: flex) {
-    & when (@layoutType = 'absolute') {
+    & when not (@layoutType = absolute) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    & when (@layoutType = absolute) {
         position: relative;
 
         > :first-child {
@@ -10,10 +16,134 @@
             transform: translate(-50%, -50%);
         }
     }
-    & when not (@layoutType = 'absolute') {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+}
+
+/* 一侧固定宽度，另一侧宽度自适应 */
+.one-side-fixed-width(@width: 100) {
+    display: flex;
+    word-break: break-all;
+
+    > .fixed-side{
+        & when (isunit(@width, '')) {
+            width: unit(@width, px);
+        }
+        & when not (isunit(@width, '')) {
+            width: @width;
+        }
+    }
+    
+    > :not(.fixed-side) {
+        flex: 1;
     }
 }
 
+/* 两侧固定宽度，中间宽度自适应 */
+.two-sides-fixed-width(@leftWidth: 100, @rightWidth: 100, @alignItems: normal) {
+    display: flex;
+    word-break: break-all;
+    align-items: @alignItems;
+
+    > :first-child {
+        & when (isunit(@leftWidth, '')) {
+            width: unit(@leftWidth, px);
+        }
+        & when not (isunit(@leftWidth, '')) {
+            width: @leftWidth;
+        }
+    }
+
+    > :nth-child(2) {
+        flex: 1;
+    }
+
+    > :last-child {
+        & when (isunit(@rightWidth, '')) {
+            width: unit(@rightWidth, px);
+        }
+        & when not (isunit(@rightWidth, '')) {
+            width: @rightWidth;
+        }
+    }
+}
+
+/* 分散对齐 */
+.justify(@direction: horizontal) when (@direction = vertical) {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.justify(@direction: horizontal) when (@direction = horizontal) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.justify(@direction: horizontal, @padding: '')  when (@direction = horizontal) and (isunit(@padding, ''))  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: @padding;
+}
+
+/* 圣杯布局 */
+.grail-layout(@wholeHeight: 500, @topHeight: 50, @bottomHeight: 50){
+    display: flex;
+    flex-direction: column;
+    word-break: break-all;
+    
+    & when (isunit(@wholeHeight, '')) {
+        height: unit(@wholeHeight, px);
+    }
+
+    & when not (isunit(@wholeHeight, '')) {
+        height: @wholeHeight;
+    }
+
+    > :first-child {
+        & when (isunit(@topHeight, '')) {
+            height: unit(@topHeight, px);
+        }
+    
+        & when not (isunit(@topHeight, '')) {
+            height: @topHeight;
+        }
+    }
+
+    > :nth-child(2) {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    > :last-child {
+        & when (isunit(@bottomHeight, '')) {
+            height: unit(@bottomHeight, px);
+        }
+    
+        & when not (isunit(@bottomHeight, '')) {
+            height: @bottomHeight;
+        }
+    }
+}
+
+/* 两列等高布局 */
+
+/* 图文布局 */
+
+/* 等分布局 */
+.grid(@direction: horizontal) when (@direction = vertical) {
+    display: flex;
+    flex-direction: column;
+
+    > * {
+      flex: 1;
+    }
+}
+
+.grid(@direction: horizontal) when not (@direction = vertical) {
+    display: flex;
+
+    > * {
+      flex: 1;
+    }
+}

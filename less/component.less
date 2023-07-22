@@ -1,0 +1,80 @@
+/* 三角形 */
+.triangle(@borderWidth: 10, @shapeColor: #666, @direction: up) {
+    width: 0;
+    height: 0;
+
+    & when (isunit(@borderWidth, '')) {
+        border: unit(@borderWidth, px) solid transparent;;
+    }
+
+    & when not (isunit(@borderWidth, '')) {
+        border:  @borderWidth solid transparent;
+    }
+
+    @doubleBorderWidth: 2 * @borderWidth;
+
+    & when (isunit(@doubleBorderWidth, '')) {
+        @borderStyle: unit(@doubleBorderWidth, px) solid @shapeColor;
+
+        & when (@direction = up) {
+            border-bottom: @borderStyle;
+        }
+    
+        & when (@direction = down) {
+            border-top: @borderStyle;
+        }
+    
+        & when (@direction = left) {
+            border-right: @borderStyle;
+        }
+    
+        & when (@direction = right) {
+            border-left: @borderStyle;
+        }
+    }
+
+    & when not (isunit(@doubleBorderWidth, '')) {
+        @borderStyle:  @doubleBorderWidth solid @shapeColor;
+
+        & when (@direction = up) {
+            border-bottom: @borderStyle;
+        }
+
+        & when (@direction = down) {
+            border-top: @borderStyle;
+        }
+
+        & when (@direction = left) {
+            border-right: @borderStyle;
+        }
+
+        & when (@direction = right) {
+            border-left: @borderStyle;
+        }
+    }
+}
+
+/* 实心圆 */
+.disc(@diameter: 15, @bgColor: #666) {
+    border-radius: 50%;
+    
+    & when (isunit(@diameter, '')) {
+        width: unit(@diameter, px);
+        height: unit(@diameter, px);
+    }
+
+    & when not (isunit(@diameter, '')) {
+        width: @diameter;
+        height: @diameter;
+    }
+
+    & when (iscolor(@bgColor)) {
+      background-color: @bgColor;
+    }
+
+    & when not (iscolor(@bgColor)) {
+      background-image: @bgColor;
+    }
+}
+
+/* 宽高二比一矩形 */

@@ -1,0 +1,105 @@
+/* 文本溢出显示省略号 */
+.text-overflow(@width, @line: 1) {
+    overflow: hidden;
+    
+    & when (isunit(@width, '')) {
+        width: unit(@width, px);
+    }
+
+    & when not (isunit(@width, '')) {
+        width: @width;
+    }
+
+    & when (@line = 1) {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    & when (@line > 1) {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: @line;
+        word-break: break-all;
+    }
+}
+
+/*
+* 功能：1px 物理像素
+* 前提：正确设置 meta 标签，即 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+*/
+.one-physical-pixel-border(@bStyle, @color, @bDir: null) {
+	position: relative;
+
+	&:after {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        transform: scale(0.5);
+
+        & when (@bDir = top) {
+            left: 0;
+            @{bDir}: 0;
+            width: 200%;
+            height: 0;
+            transform-origin: left @bDir;
+            border-@{bDir}: 1px @bStyle @color;
+        }
+
+        & when (@bDir = bottom) {
+            left: 0;
+            @{bDir}: 0;
+            width: 200%;
+            height: 0;
+            transform-origin: left @bDir;
+            border-@{bDir}: 1px @bStyle @color;
+        }
+
+        & when (@bDir = left) {
+            top: 0;
+            @{bDir}: 0;
+            width: 0;
+            height: 200%;
+            transform-origin: @bDir top;
+            border-@{bDir}: 1px @bStyle @color;
+        }
+
+        & when (@bDir = right) {
+            top: 0;
+            @{bDir}: 0;
+            width: 0;
+            height: 200%;
+            transform-origin: @bDir top;
+            border-@{bDir}: 1px @bStyle @color;
+        }
+
+        & when (@bDir = null) {
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            transform-origin: left top;
+            border: 1px @bStyle @color;
+        }
+	}
+}
+
+/* 清除浮动 */
+.clearfix {
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/* 指定背景图像的大小 */
+.backgroundSize(@image, @width: 100%, @height: 100%) {
+    background-image: url(@image);
+
+    & when (isunit(@width, '')) {
+        background-size: unit(@width, px) unit(@height, px);
+    }
+
+    & when not (isunit(@width, '')) {
+        background-size: @width @height;
+    }
+}

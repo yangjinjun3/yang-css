@@ -1,5 +1,5 @@
 /* 文本溢出显示省略号 */
-@mixin text-overflow($line:1, $width:'') {
+@mixin text-overflow($width, $line: 1) {
   width: if(type-of($width) == 'number', #{$width} + 'px', #{$width});
   overflow: hidden;
 
