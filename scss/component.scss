@@ -28,8 +28,8 @@
 /* 实心圆 */
 @mixin disc($diameter: 15, $bgColor: #666) {
     border-radius: 50%;
-    width: if(type-of($diameter) == 'number', #{$diameter} + 'px', #{$diameter});
-    height: if(type-of($diameter) == 'number', #{$diameter} + 'px', #{$diameter});
+    width: if(unit($diameter) == '', #{$diameter} + 'px', #{$diameter});
+    height: if(unit($diameter) == '', #{$diameter} + 'px', #{$diameter});
     @if(str-index(#{$bgColor}, 'gradient') == null) {
       background-color: #{$bgColor};
     }

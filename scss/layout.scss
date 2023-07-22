@@ -24,7 +24,7 @@
     word-break: break-all;
 
     > .fixed-side{
-        width: if(type-of($width) == 'number', #{$width} + 'px', #{$width});
+        width: if(unit($width) == '', #{$width} + 'px', #{$width});
     }
     
     > :not(.fixed-side) {
@@ -39,7 +39,7 @@
     align-items: #{$alignItems};
 
     > :first-child {
-        width: if(type-of($leftWidth) == 'number', #{$leftWidth} + 'px', #{$leftWidth});
+        width: if(unit($leftWidth) == '', #{$leftWidth} + 'px', #{$leftWidth});
     }
 
     > :nth-child(2) {
@@ -47,7 +47,7 @@
     }
 
     > :last-child {
-        width: if(type-of($rightWidth) == 'number', #{$rightWidth} + 'px', #{$rightWidth});
+        width: if(unit($rightWidth) == '', #{$rightWidth} + 'px', #{$rightWidth});
     }
 }
 
@@ -70,13 +70,13 @@
 
 /* 圣杯布局 */
 @mixin grail-layout($wholeHeight: 500, $topHeight: 50, $bottomHeight: 50){
-    height: if(type-of($wholeHeight) == 'number', #{$wholeHeight} + 'px', #{$wholeHeight});
+    height: if(unit($wholeHeight) == '', #{$wholeHeight} + 'px', #{$wholeHeight});
     display: flex;
     flex-direction: column;
     word-break: break-all;
 
     > :first-child {
-        height: if(type-of($topHeight) == 'number', #{$topHeight} + 'px', #{$topHeight});
+        height: if(unit($topHeight) == '', #{$topHeight} + 'px', #{$topHeight});
     }
 
     > :nth-child(2) {
@@ -85,7 +85,7 @@
     }
 
     > :last-child {
-        height: if(type-of($bottomHeight) == 'number', #{$bottomHeight} + 'px', #{$bottomHeight});
+        height: if(unit($bottomHeight) == '', #{$bottomHeight} + 'px', #{$bottomHeight});
     }
 }
 
