@@ -1,3 +1,5 @@
+@import './center.scss';
+
 /* 三角形 */
 @mixin triangle($borderWidth: 10, $shapeColor: #666, $direction: up) {
     width: 0;
@@ -40,3 +42,43 @@
 }
 
 /* 宽高二比一矩形 */
+
+/* 
+* 图片遮罩层
+* shape: circle | rectangle
+*/
+@mixin image-mask($opacity: 0.7, $shape: circle, $zIndex: 1, $height: 30%) {
+    position: relative;
+
+    > .mask,
+    > .mask-text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        @if($shape == 'circle') {
+            top: 0;
+        }
+        @else {
+            height: if(unit($height) == '', #{$height} + 'px', #{$height});
+        }
+    }
+
+    > .mask {
+        z-index: $zIndex;
+        background-color: #000;
+        opacity: #{$opacity};
+        
+        @if($shape == 'circle') {
+            border-radius: 50%;
+        }
+    }
+
+    > .mask-text {
+        z-index: $zIndex + 1;
+        color: #fff;
+        word-break: break-all;
+
+        @include center;
+    }
+}

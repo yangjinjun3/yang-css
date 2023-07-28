@@ -1,3 +1,5 @@
+@import './center.less';
+
 /* 三角形 */
 .triangle(@borderWidth: 10, @shapeColor: #666, @direction: up) {
     width: 0;
@@ -78,3 +80,51 @@
 }
 
 /* 宽高二比一矩形 */
+
+/* 
+* 图片遮罩层
+* shape: circle | rectangle
+*/
+.image-mask(@opacity: 0.7, @shape: circle, @zIndex: 1, @height: 30%) {
+    position: relative;
+  
+    > .mask,
+    > .mask-text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+  
+        & when (@shape = circle) {
+          top: 0;
+        }
+  
+        & when not (@shape = circle) {
+          & when (isunit(@height, '')) {
+            height: unit(@height, px);
+          }
+  
+          & when not (isunit(@height, '')) {
+            height: @height;
+          }
+        }
+    }
+  
+    > .mask {
+        z-index: @zIndex;
+        background-color: #000;
+        opacity: @opacity;
+  
+        & when (@shape = circle) {
+          border-radius: 50%;
+        }
+    }
+  
+    > .mask-text {
+        z-index: @zIndex + 1;
+        color: #fff;
+        word-break: break-all;
+  
+        .center;
+    }
+  }
