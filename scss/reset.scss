@@ -1,0 +1,23 @@
+/* 列表 */
+ol,
+ul {
+	list-style: none;
+}
+
+/* 表格 */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 文本域 */
+textarea {
+	resize: none;
+}
+
+/* 置灰状态的鼠标样式 */
+.disabled,
+[disabled] {
+	cursor: not-allowed;
+	pointer-events: none;
+}

@@ -1,0 +1,30 @@
+@import './reset.scss';
+
+/* 去除 IE 下文本框以及密码框的叉号和眼睛 */
+input::-ms-clear{display:none;}
+Input::-ms-reveal{display:none;}
+
+/* 滚动条滑动 */
+html {
+	scroll-behavior: smooth;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	-webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* windows 系统美化 chrome 滚动条 */
+html::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+html::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.45);
+}
+
+/* 去除 chrome 中文本框/域默认的黄色背景 */
+input[type="text"]:-webkit-autofill,
+textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
