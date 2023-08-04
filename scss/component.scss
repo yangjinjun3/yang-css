@@ -33,7 +33,7 @@
     border-radius: 50%;
     width: if(unit($diameter) == '', #{$diameter} + 'px', #{$diameter});
     height: if(unit($diameter) == '', #{$diameter} + 'px', #{$diameter});
-    @if(str-index(#{$bgColor}, 'gradient') == null) {
+    @if (str-index(#{$bgColor}, 'gradient') == null) {
       background-color: #{$bgColor};
     }
 
@@ -57,7 +57,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        @if($shape == 'circle') {
+        @if ($shape == 'circle') {
             top: 0;
         }
         @else {
@@ -98,4 +98,42 @@
     border-radius: 50%;
     margin-inline: $marginInline;
     vertical-align: middle;
+}
+
+/* 
+* 间距
+* size: 间距大小，默认是 8px
+* align: 对齐方式，默认是 center，可选 start、end、baseline、center
+* direction: 间距方向，默认是 horizontal，可选 horizontal、vertical
+* wrap: 是否自动换行，仅在 horizontal 时有效，默认是 false
+*/
+@mixin space($size: 8px, $direction: horizontal, $align: center, $wrap: false) {
+    display: inline-flex;
+    gap: $size;
+
+    @if ($direction == 'vertical') {
+        flex-direction: column;
+    }
+
+    @if ($align == 'center') {
+        align-items: center;
+    }
+
+    @if ($align == 'start') {
+        align-items: flex-start;
+    }
+
+    @if ($align == 'end') {
+        align-items: flex-end;
+    }
+
+    @if ($align == 'baseline') {
+        align-items: baseline;
+    }
+
+    @if ($wrap == true) {
+        @if $direction == 'horizontal' {
+            flex-wrap: wrap;
+        }
+    }
 }

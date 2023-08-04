@@ -145,3 +145,39 @@
     margin-inline: @marginInline;
     vertical-align: middle;
 }
+
+/* 
+* 间距
+* size: 间距大小，默认是 8px
+* align: 对齐方式，默认是 center，可选 start、end、baseline、center
+* direction: 间距方向，默认是 horizontal，可选 horizontal、vertical
+* wrap: 是否自动换行，仅在 horizontal 时有效，默认是 false
+*/
+.space(@size: 8px, @direction: horizontal, @align: center, @wrap: false) {
+    display: inline-flex;
+    gap: @size;
+
+    & when (@direction = vertical) {
+        flex-direction: column;
+    }
+
+    & when (@align = center) {
+        align-items: center;
+    }
+
+    & when (@align = start) {
+        align-items: flex-start;
+    }
+
+    & when (@align = end) {
+        align-items: flex-end;
+    }
+
+    & when (@align = baseline) {
+        align-items: baseline;
+    }
+
+    & when (@wrap = true) and (@direction = horizontal) {
+        flex-wrap: wrap;
+    }
+}
