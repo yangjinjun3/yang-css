@@ -1,4 +1,5 @@
-@import './center.less';
+@import './layout/center.less';
+@import './variable.less';
 
 /* 三角形 */
 .triangle(@borderWidth: 10, @shapeColor: #666, @direction: up) {
@@ -127,4 +128,20 @@
   
         .center;
     }
-  }
+}
+
+/* 
+* 点
+* size: 尺寸，宽和高一样，默认是 5px
+* backgroundColor: 背景颜色，默认是白色
+* marginInline: 水平外边距，默认左右都是 5px
+*/
+.point(@size: 5px, @backgroundColor: @white, @marginInline: 5px) {
+    display: inline-block;
+    width: @size;
+    height: @size;
+    background-color: @backgroundColor;
+    border-radius: 50%;
+    margin-inline: @marginInline;
+    vertical-align: middle;
+}

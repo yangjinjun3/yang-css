@@ -15,7 +15,7 @@ textarea {
 	resize: none;
 }
 
-/* 置灰状态的鼠标样式 */
+/* 置灰状态不可点击 */
 .disabled,
 [disabled] {
 	pointer-events: none;
