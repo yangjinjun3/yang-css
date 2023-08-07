@@ -1,0 +1,28 @@
+/* flex 对齐方式 */
+.flex(@justifyContent: center, @alignItems: center) {
+    display: flex;
+  
+    & when (@justifyContent = start) {
+        justify-content: flex-start;
+    }
+  
+    & when (@justifyContent = center) {
+        justify-content: center;
+    }
+  
+    & when (@justifyContent = end) {
+        justify-content: flex-end;
+    }
+  
+    & when (@alignItems = start) {
+        align-items: flex-start;
+    }
+  
+    & when (@alignItems = center) {
+        align-items: center;
+    }
+  
+    & when (@alignItems = end) {
+        align-items: flex-end;
+    }
+}

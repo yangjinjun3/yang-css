@@ -1,3 +1,5 @@
+@import './flex.scss';
+
 /* 垂直水平居中 */
 @mixin center($layoutType: flex) {
     @if($layoutType == 'absolute') {
@@ -12,8 +14,6 @@
     }
 
     @else {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex;
     }
 }

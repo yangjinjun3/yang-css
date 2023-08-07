@@ -1,9 +1,9 @@
+@import './flex.less';
+
 /* 垂直水平居中 */
 .center(@layoutType: flex) {
     & when not (@layoutType = absolute) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        .flex;
     }
     
     & when (@layoutType = absolute) {
