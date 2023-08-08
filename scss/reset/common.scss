@@ -18,5 +18,13 @@ textarea {
 /* 置灰状态不可点击 */
 .disabled,
 [disabled] {
+	cursor: not-allowed;
+}
+
+.disabled2 {
 	pointer-events: none;
+}
+
+* {
+	line-height: 1;
 }

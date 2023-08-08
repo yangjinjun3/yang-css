@@ -13,6 +13,10 @@
     @if ($justifyContent = 'end') {
         justify-content: flex-end;
     }
+
+    @if ($justifyContent = 'between') {
+        justify-content: space-between;
+    }
   
     @if ($alignItems = 'start') {
         align-items: flex-start;
