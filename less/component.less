@@ -89,11 +89,10 @@
 .image-mask(@opacity: 0.7, @shape: circle, @zIndex: 1, @height: 30%) {
     position: relative;
   
-    > .mask,
-    > .mask-text {
+    > [class$="-mask"],
+    > [class$="-mask-text"] {
         position: absolute;
-        left: 0;
-        right: 0;
+        inset-inline: 0;
         bottom: 0;
   
         & when (@shape = circle) {
@@ -111,9 +110,9 @@
         }
     }
   
-    > .mask {
+    > [class$="-mask"] {
         z-index: @zIndex;
-        background-color: #000;
+        background-color: @black;
         opacity: @opacity;
   
         & when (@shape = circle) {
@@ -121,9 +120,9 @@
         }
     }
   
-    > .mask-text {
+    > [class$="-mask-text"] {
         z-index: @zIndex + 1;
-        color: #fff;
+        color: @white;
         word-break: break-all;
   
         .center;
