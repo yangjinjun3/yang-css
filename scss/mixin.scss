@@ -75,3 +75,79 @@
   background-image: url(#{$image});
   background-size: $width $height;
 }
+
+/* 宽度 */
+@mixin w($width) {
+  width: $width;
+}
+
+/* 高度 */
+@mixin h($height) {
+  height: $height;
+}
+
+/* 宽度 + 高度 */
+@mixin w-h($width, $height) {
+  @include w($width);
+  @include h($height);
+}
+
+/* 字体大小 */
+@mixin fz($fontSize) {
+  font-size: $fontSize;
+}
+
+/* 字重 */
+@mixin fw($fontWeight: normal) {
+  font-weight: $fontWeight;
+}
+
+/* 字体大小 + 字重 */
+@mixin fzw($fontSize, $fontWeight) {
+  @include fz($fontSize);
+  @include fw($fontWeight);
+}
+
+/* 上外边距 */
+@mixin mt($marginTop) {
+  margin-top: $marginTop;
+}
+
+/* 下外边距 */
+@mixin mb($marginBottom) {
+  margin-bottom: $marginBottom;
+}
+
+/* 左外边距 */
+@mixin ml($marginLeft) {
+  margin-left: $marginLeft;
+}
+
+/* 右外边距 */
+@mixin mr($marginRight) {
+  margin-right: $marginRight;
+}
+
+/* 左上外边距 */
+@mixin mlt($marginLeft, $marginTop) {
+  @include ml($marginLeft);
+  @include mt($marginTop);
+}
+
+/* 左下外边距 */
+@mixin mlb($marginLeft, $marginBottom) {
+  @include ml($marginLeft);
+  @include mb($marginBottom);
+}
+
+/* 右上外边距 */
+@mixin mrt($marginRight, $marginTop) {
+  @include mr($marginRight);
+  @include mt($marginTop);
+}
+
+/* 右下外边距 */
+@mixin mrb($marginRight, $marginBottom) {
+  @include mr($marginRight);
+  @include mb($marginBottom);
+}

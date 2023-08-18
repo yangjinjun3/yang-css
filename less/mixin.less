@@ -103,3 +103,79 @@
         background-size: @width @height;
     }
 }
+
+/* 宽度 */
+.w(@width) {
+  width: @width;
+}
+
+/* 高度 */
+.h(@height) {
+  height: @height;
+}
+
+/* 宽度 + 高度 */
+.w-h(@width, @height) {
+  .w(@width);
+  .h(@height);
+}
+
+/* 字体大小 */
+.fz(@fontSize) {
+  font-size: @fontSize;
+}
+
+/* 字重 */
+.fw(@fontWeight: normal) {
+  font-weight: @fontWeight;
+}
+
+/* 字体大小 + 字重 */
+.fzw(@fontSize, @fontWeight) {
+  .fz(@fontSize);
+  .fw(@fontWeight);
+}
+
+/* 上外边距 */
+.mt(@marginTop) {
+  margin-top: @marginTop;
+}
+
+/* 下外边距 */
+.mb(@marginBottom) {
+  margin-bottom: @marginBottom;
+}
+
+/* 左外边距 */
+.ml(@marginLeft) {
+  margin-left: @marginLeft;
+}
+
+/* 右外边距 */
+.mr(@marginRight) {
+  margin-right: @marginRight;
+}
+
+/* 左上外边距 */
+.mlt(@marginLeft, @marginTop) {
+  .ml(@marginLeft);
+  .mt(@marginTop);
+}
+
+/* 左下外边距 */
+.mlb(@marginLeft, @marginBottom) {
+  .ml(@marginLeft);
+  .mb(@marginBottom);
+}
+
+/* 右上外边距 */
+.mrt(@marginRight, @marginTop) {
+  .mr(@marginRight);
+  .mt(@marginTop);
+}
+
+/* 右下外边距 */
+.mrb(@marginRight, @marginBottom) {
+  .mr(@marginRight);
+  .mb(@marginBottom);
+}
