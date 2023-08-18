@@ -1,3 +1,4 @@
+@import '../variable.scss';
 @import './common.scss';
 
 /* 去除 IE 下文本框以及密码框的叉号和眼睛 */
@@ -7,7 +8,7 @@ Input::-ms-reveal{display:none;}
 /* 滚动条滑动 */
 html {
 	scroll-behavior: smooth;
-	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	-webkit-tap-highlight-color:rgba($black, 0);
 	-webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
@@ -20,11 +21,11 @@ html::-webkit-scrollbar {
 
 html::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: rgba(0,0,0,.45);
+    background-color: rgba($black, .45);
 }
 
 /* 去除 chrome 中文本框/域默认的黄色背景 */
 input[type="text"]:-webkit-autofill,
 textarea:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px white inset;
+    -webkit-box-shadow: 0 0 0 1000px $white inset;
 }

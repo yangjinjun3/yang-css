@@ -61,3 +61,40 @@ export default defineConfig({
     ...
 })
 ```
+
+3. 在 craco 中使用
+```js
+const sassResourcesLoader = require('craco-sass-resources-loader');
+module.exports = {
+    plugins: [
+      {
+        plugin: sassResourcesLoader,
+        options: {
+          resources: [
+            'node_modules/yang-css/scss/mixin.scss',
+          ],
+        },
+      },
+    ],
+};
+
+const CracoLessPlugin = require('craco-less');
+module.exports = {
+    plugins: [
+      {
+        plugin: CracoLessPlugin,
+        options: {
+          lessLoaderOptions: {
+            lessOptions: {
+              modifyVars: {
+                '@error-color': '#1890ff'
+              },
+              javascriptEnabled: true,
+            },
+            additionalData: `@import "node_modules/yang-css/less/mixin.less";`
+          }
+        },
+      }
+    ],
+};
+```

@@ -6,27 +6,27 @@
         justify-content: flex-start;
     }
   
-    @if ($justifyContent = 'center') {
+    @if ($justifyContent == 'center') {
         justify-content: center;
     }
   
-    @if ($justifyContent = 'end') {
+    @if ($justifyContent == 'end') {
         justify-content: flex-end;
     }
 
-    @if ($justifyContent = 'between') {
+    @if ($justifyContent == 'between') {
         justify-content: space-between;
     }
   
-    @if ($alignItems = 'start') {
+    @if ($alignItems == 'start') {
         align-items: flex-start;
     }
   
-    @if ($alignItems = 'center') {
+    @if ($alignItems == 'center') {
         align-items: center;
     }
   
-    @if ($alignItems = 'end') {
+    @if ($alignItems == 'end') {
         align-items: flex-end;
     }
 }
